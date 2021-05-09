@@ -1,0 +1,53 @@
+video_description:
+  version: 1.0
+  parts:
+    - name: Introduction
+    - short_desc: >
+          Hello everyone welcome to my YouTube channel, today we are going to cover
+          about face recognition using inception v3 model on celebrity dataset containing
+          105 images which are collected from Pinterest.
+
+    - name: Dataset Formatting
+    - short_desc: |
+          a. Firstly we import the required libraries like tensorflow,numpy,os
+          b. then we go to image directory and see the name of people who are in
+              dataset.
+          c. we then assign numberical value to various people present in the dataset
+          d. we create a mapping of names and numerical value and a reverse mapping for
+              resolving this will be used later to map predicted value to name of person
+              of the dataset.
+          e. Now we will create a dataset and a testset
+          f. Firstly I will load the image from the path then convert the image into
+              array and then normalize the image by dividing the image array with 255.0
+              and then if the limit is less than 100 we will add the image to dataset
+              else add it to testset
+          g. Now we store the image array and its label in data and labels0 for dataset and
+              test and tlabels0 for testset simultaneously.
+          h. then we convert the label to categorical label and image array to numpy array
+              and then the same thing to label variable.
+          i. then we do the same thing to testset image array and label array.
+          j. then we split the dataset into train and test split with sklearn function.
+          k. then we see the shape of the variables we just made.
+          l. we then use datagen functon of tensorflow it will be used  used to expand
+              the training dataset in order to improve the performance and ability of the
+              model to generalize.
+
+    - name: Model Making / Customizing
+    - short_desc: |
+          a. Firstly, we get the number of classes presend in the dataset which is 105 in this case.
+          b. Now, we add the inception model to the base_model with input shape of our image which is (120,120,3) which are height width and 3 for rgb.
+          c. Then, we train all layers of inception except the last 2 layers.
+          d. Now we make our final model by adding inception model on top followed bt global average pooling followed by last layer which is dense layer which has activation
+              function softmax.
+          e. Without output neuron being of no of classes.
+          f. Now we compile the model with loss function being catgorical crossentropy with adam optimizer
+          g. We compile see the summary of the model
+          h. How we fit the data on the model and train with batches of size 32  for 30 epochs.
+          i. Now we can see that the model accuracy is low being only 21 % you all can fine tune it.
+
+    - name: Prediction
+    - short_desc: |
+          a. We load a image of bill gates from dataset.
+          b. Now, we convert image into array for mapping which i load you all about in the start of this tutorial reverse mapping.
+          c. Now, we sent the image to the model and prediction is mapped with reverse_mapping function adn we get the prediction that this is a
+              picture of bill gates.
